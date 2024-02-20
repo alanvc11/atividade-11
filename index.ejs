@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    
+    <form onsubmit="return validateForm()">
+        <h1>Tela de Login</h1> <br> <br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Endereço de email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Nunca compartilharemos seu e-mail com mais ninguém.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Entrar</button>
+        <a href="/cadastro">Cadastro</a>
+    </form>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        // Array de dados de email e senha
+        var userData = [
+            { email: 'alan@gmail.com', senha: 'senha123', perfil: 'perfil1.html' },
+            { email: 'usuario2@email.com', senha: 'senha456', perfil: 'perfil2.html' }
+        ];
+
+        function validateForm() {
+            var userEmail = document.getElementById('exampleInputEmail1').value;
+            var userPassword = document.getElementById('exampleInputPassword1').value;
+
+            // Verifica se o email e a senha correspondem aos dados no array
+            var matchedUser = userData.find(function(user) {
+                return user.email === userEmail && user.senha === userPassword;
+            });
+
+            if (matchedUser) {
+                alert('Login bem-sucedido!');
+                return false; // Impede o envio do formulário
+            } else {
+                alert('Erro: Email ou senha incorretos!');
+                return false; // Impede o envio do formulário
+            }
+        }
+    </script>
+</body>
+</html>
+
